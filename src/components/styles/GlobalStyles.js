@@ -1,8 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-  
   * {
     box-sizing: border-box;
     margin: 0;
@@ -14,11 +12,12 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: ${({ theme }) => theme.colors.primary1_light};
+    background-color: ${({ theme }) => theme.colors.primary1_dark};
     font-family: ${({ theme }) => theme.fonts.main};
     font-size: 1.2em;
     color: ${({ theme }) => theme.colors.neutral};
     cursor: default;
+    text-align: center;
   }
 
   h1,h2,h3,h4,h5,h6,button {
@@ -27,6 +26,14 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     text-decoration: none;
+    color: ${({ theme }) => theme.colors.primary1_light};
+    &:hover{
+      color: ${({ theme }) => theme.colors.neutral};
+    }
+  }
+
+  p {
+    color: ${({ theme }) => theme.colors.secondary1_light};
   }
 
   li{
