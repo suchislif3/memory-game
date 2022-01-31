@@ -1,18 +1,45 @@
+import { gameStates, images } from "../constants/constants";
 import {
   BackImage,
   FrontImage,
   SingleCardContainer,
 } from "./styles/CardStyles";
 
-const SingleCard = ({ card, handleChoice, flipped }) => {
+const SingleCard = ({
+  card,
+  handleCardClick,
+  flipped,
+  gameState,
+  showCards,
+  hoveredOverCard,
+  isGridSizeValid,
+  children,
+}) => {
   return (
-    <SingleCardContainer>
-      <FrontImage src={card.src} flipped={flipped} matched={card.matched} alt="card front" />
+    <SingleCardContainer
+      showCards={showCards}
+      card={card}
+      hoveredOverCard={hoveredOverCard}
+      gameState={gameState}
+      isGridSizeValid={isGridSizeValid}
+    >
+      {gameState === gameStates.playing && (
+        <FrontImage
+          src={card.src}
+          flipped={flipped}
+          matched={card.matched}
+          alt="card front"
+        />
+      )}
+      {children}
       <BackImage
-        src="/images/card-back.jpg"
+        src={images.CARDBACK.src}
         alt="card back"
-        onClick={() => handleChoice(card)}
+        id={card.position}
+        onClick={() => handleCardClick(card)}
         flipped={flipped}
+        isGridSizeValid={isGridSizeValid}
+        gameState={gameState}
       />
     </SingleCardContainer>
   );
