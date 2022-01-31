@@ -14,7 +14,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     background-color: ${({ theme }) => theme.colors.primary1_dark};
     font-family: ${({ theme }) => theme.fonts.main};
-    font-size: 1.2em;
+    font-size: min(2vmin, 1.2em);
     color: ${({ theme }) => theme.colors.neutral};
     cursor: default;
     text-align: center;
