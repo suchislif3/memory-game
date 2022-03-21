@@ -4,7 +4,7 @@ const theme = {
     main: "Poppins, sans-serif",
   },
   colors: {
-    neutral: "hsl(204,23.8%,95.9%)",
+    neutral: "#f2f5f7",
 
     primary1_light: "#008282",
     primary1_neutral: "#003C4D",

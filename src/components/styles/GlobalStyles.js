@@ -14,7 +14,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     background-color: ${({ theme }) => theme.colors.primary1_dark};
     font-family: ${({ theme }) => theme.fonts.main};
-    font-size: 1.2em;
+    font-size: min(2vmin, 1.2em);
     color: ${({ theme }) => theme.colors.neutral};
     cursor: default;
     text-align: center;
@@ -27,13 +27,17 @@ const GlobalStyles = createGlobalStyle`
   a {
     text-decoration: none;
     color: ${({ theme }) => theme.colors.primary1_light};
-    &:hover{
-      color: ${({ theme }) => theme.colors.neutral};
+    &:hover {
+      color: ${({ theme }) => theme.colors.secondary2_light};
     }
   }
 
   p {
     color: ${({ theme }) => theme.colors.secondary1_light};
+  }
+
+  span {
+    color: ${({ theme }) => theme.colors.neutral};
   }
 
   li{
