@@ -2,26 +2,25 @@ import { useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./components/styles/GlobalStyles";
 import theme from "./Themes/default";
-import { CardGrid, MainContainer } from "./components/styles/GlobalComponents";
 import {
-  gameStates,
-  cardThemes,
-  basicGridSize,
-  images,
-} from "./constants/constants";
-import Header from "./components/Header";
+  CardGrid,
+  MainContainer,
+  Stat,
+} from "./components/styles/GlobalComponents";
+import { gameStates, basicGridSize, images } from "./constants/constants";
+import NewGameSection from "./components/NewGameSection";
 import SingleCard from "./components/SingleCard";
-import Footer from "./components/Footer";
 
 function App() {
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
+  const [matchedPairs, setMatchedPairs] = useState(0);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [choosingDisabled, setChoosingDisabled] = useState(false);
   const [gridSize, setGridSize] = useState(basicGridSize);
   const [gameState, setGameState] = useState(gameStates.settingGridSize);
-  const [cardTheme, setcardTheme] = useState(cardThemes.animals);
+  const [cardTheme, setCardTheme] = useState("ANIMALS");
   const [hoveredOverCard, setHoveredOverCard] = useState("");
   const [numberOfCards, setNumberOfCards] = useState(
     gridSize.rows * gridSize.columns
@@ -29,10 +28,21 @@ function App() {
   const [showCards, setShowCards] = useState(true);
 
   const shuffleCards = () => {
-    let halfOfCards = images[cardTheme].slice(0, numberOfCards / 2);
+    //getting random cards
+    let halfOfCards = [];
+    for (let i = 0; i < numberOfCards / 2; ) {
+      const randomNumber = Math.floor(
+        Math.random() * images.FRONT[cardTheme].length
+      );
+      if (halfOfCards.indexOf(images.FRONT[cardTheme][randomNumber]) === -1) {
+        halfOfCards.push(images.FRONT[cardTheme][randomNumber]);
+        i++;
+      }
+    }
+    //doubling the selected cards
     let setOfCards = [...halfOfCards, ...halfOfCards];
 
-    //getting random order
+    //getting random order of the cards
     for (let i = setOfCards.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       const temp = setOfCards[i];
@@ -58,6 +68,7 @@ function App() {
 
   const resetGame = () => {
     setTurns(0);
+    setMatchedPairs(0);
     resetChoices();
     // setting property 'matched' to false to prevent revealing the new game's cards while flipping cards
     setCards((prevCards) => {
@@ -140,6 +151,7 @@ function App() {
 
   useEffect(() => {
     shuffleCards();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [numberOfCards]);
 
   useEffect(() => {
@@ -158,6 +170,7 @@ function App() {
           return newCardsArray;
         });
         resetChoices();
+        setMatchedPairs((prevMatchedPairs) => prevMatchedPairs + 1);
       } else {
         setTimeout(() => resetChoices(), 1000);
       }
@@ -168,20 +181,43 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <MainContainer>
-        <Header
+        <h1>Memory Game</h1>
+        <NewGameSection
           startNewGame={startNewGame}
+          gridSize={gridSize}
           changeGridSize={changeGridSize}
-          turns={turns}
           gameState={gameState}
-        />{" "}
+          hoveredOverCard={hoveredOverCard}
+          cardTheme={cardTheme}
+          setCardTheme={setCardTheme}
+        />
+
+        {gameState === "PLAYING" ? (
+          <Stat>
+            <span>Turns: {turns}</span>
+            <span>
+              Matched: {matchedPairs} / {numberOfCards / 2}
+            </span>
+          </Stat>
+        ) : (
+          <span>
+            Please select theme and click on a card to set the grid size and
+            start the game!
+          </span>
+        )}
+
         <CardGrid columns={gridSize.columns} rows={gridSize.rows}>
           {cards.map((cardRow) => {
             return cardRow.map((card, id) => (
               <div
                 key={id}
                 onMouseEnter={() => {
-                  if (isGridSizeValid(card)) setHoveredOverCard(card);
-                }} // onMouseEnter not working with styled components :(
+                  if (
+                    gameState === gameStates.settingGridSize &&
+                    isGridSizeValid(card)
+                  )
+                    setHoveredOverCard(card);
+                }}
                 onMouseLeave={() => setHoveredOverCard(null)}
               >
                 <SingleCard
@@ -200,7 +236,6 @@ function App() {
             ));
           })}
         </CardGrid>
-        <Footer />
       </MainContainer>
     </ThemeProvider>
   );

@@ -13,7 +13,6 @@ const SingleCard = ({
   showCards,
   hoveredOverCard,
   isGridSizeValid,
-  children,
 }) => {
   return (
     <SingleCardContainer
@@ -29,17 +28,18 @@ const SingleCard = ({
           flipped={flipped}
           matched={card.matched}
           alt="card front"
+          draggable="false"
         />
       )}
-      {children}
       <BackImage
-        src={images.CARDBACK.src}
+        src={images.BACK.src}
         alt="card back"
         id={card.position}
         onClick={() => handleCardClick(card)}
         flipped={flipped}
         isGridSizeValid={isGridSizeValid}
         gameState={gameState}
+        draggable="false"
       />
     </SingleCardContainer>
   );

@@ -27,13 +27,17 @@ const GlobalStyles = createGlobalStyle`
   a {
     text-decoration: none;
     color: ${({ theme }) => theme.colors.primary1_light};
-    &:hover{
-      color: ${({ theme }) => theme.colors.neutral};
+    &:hover {
+      color: ${({ theme }) => theme.colors.secondary2_light};
     }
   }
 
   p {
     color: ${({ theme }) => theme.colors.secondary1_light};
+  }
+
+  span {
+    color: ${({ theme }) => theme.colors.neutral};
   }
 
   li{
