@@ -33,10 +33,10 @@ export const CloseIconDiv = styled.div`
   display: flex;
   align-items: center;
   padding: 3px;
-  color: ${({ theme }) => theme.colors.primary1_dark};
+  color: ${({ theme }) => theme.colors.primary.dark};
   cursor: pointer;
   
   &:hover {
-    color: ${({ theme }) => theme.colors.secondary1_light};
+    color: ${({ theme }) => theme.colors.secondary1.light};
   }
 `;

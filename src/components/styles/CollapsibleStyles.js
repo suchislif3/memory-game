@@ -4,7 +4,7 @@ export const CollapsibleTitle = styled.div`
   width: 70%;
   writing-mode: vertical-lr;
   max-width: 500px;
-  background-color: ${({ theme }) => theme.colors.primary1_light};
+  background-color: ${({ theme }) => theme.colors.primary.light};
   padding: 3px;
   border: 1px solid ${({ theme }) => theme.colors.neutral};
   border-radius: 6px;
@@ -26,7 +26,7 @@ export const CollapsibleTitle = styled.div`
     filter: brightness(1.2);
   }
 
-  @media (max-width: 1200px) {
+  @media ${({ theme }) => theme.breakpoints.xl} {
     max-width: 400px;
   }
 `;
@@ -42,13 +42,13 @@ export const CollapsibleContent = styled.div`
   padding-top: 6px;
   border-radius: 0 0 6px 6px;
   max-width: 500px;
-  background-color: ${({ theme }) => theme.colors.primary1_light};
+  background-color: ${({ theme }) => theme.colors.primary.light};
   max-height: ${({ isOpen }) => (isOpen ? "100%" : "0")};
   opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
   overflow: hidden;
   transition: all 0.3s ease;
 
-  @media (max-width: 1200px) {
+  @media ${({ theme }) => theme.breakpoints.xl} {
     max-width: 400px;
   }
 `;
