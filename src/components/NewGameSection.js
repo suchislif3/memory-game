@@ -29,6 +29,8 @@ const NewGameSection = ({
   hoveredOverCard,
   setCardTheme,
   cardTheme,
+  numberOfCards,
+  matchedPairs,
 }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [showPhotoList, setShowPhotoList] = useState(false);
@@ -40,9 +42,22 @@ const NewGameSection = ({
     setIsOpen(!isOpen);
   };
 
+  const handleButtonClick = () => {
+    startNewGame();
+    setIsOpen(false);
+  }
+
   useEffect(() => {
     setIsOpen(gameState === gameStates.playing ? false : true);
   }, [gameState]);
+
+  useEffect(() => {
+    if (matchedPairs === numberOfCards / 2) {
+      setTimeout(() => {
+        setIsOpen(true);
+      }, 400);
+    }
+  }, [matchedPairs, numberOfCards]);
 
   return (
     <>
@@ -93,7 +108,7 @@ const NewGameSection = ({
           </GridSize>
 
           {gameState === "PLAYING" && (
-            <Button title="start new game" onClick={startNewGame}>
+            <Button title="start new game" onClick={handleButtonClick}>
               Start new game
             </Button>
           )}
