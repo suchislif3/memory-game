@@ -6,12 +6,21 @@ export const NewGameDiv = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   place-items: center;
+
+  @media ${({ theme }) => theme.breakpoints.sm} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+`;
+
+export const ThemeHeading = styled.h4`
+  grid-area: 1 / 1 / 2 / 2;
 `;
 
 export const ThemeSelection = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  place-items: center;
+  display: flex;
   grid-area: 2 / 1 / 3 / 2;
 
   & select {
@@ -43,6 +52,10 @@ export const LibraryItemImage = styled.img`
 export const LibraryItemText = styled.p`
   margin-left: 5px;
   text-align: left;
+`;
+
+export const GridSizeHeading = styled.h4`
+  grid-area: 1 / 2 / 2 / 3;
 `;
 
 export const GridSize = styled.div`

@@ -29,6 +29,9 @@ export const CollapsibleTitle = styled.div`
   @media ${({ theme }) => theme.breakpoints.xl} {
     max-width: 400px;
   }
+  @media ${({ theme }) => theme.breakpoints.sm} {
+    width: 50%;
+  }
 `;
 
 export const CollapsibleArrow = styled.div`
@@ -45,10 +48,13 @@ export const CollapsibleContent = styled.div`
   background-color: ${({ theme }) => theme.colors.primary.light};
   max-height: ${({ isOpen }) => (isOpen ? "100%" : "0")};
   opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
-  overflow: hidden;
+  overflow: ${({ isOpen }) => (isOpen ? "" : "hidden")};;
   transition: all 0.3s ease;
 
   @media ${({ theme }) => theme.breakpoints.xl} {
     max-width: 400px;
+  }
+  @media ${({ theme }) => theme.breakpoints.sm} {
+    width: 50%;
   }
 `;

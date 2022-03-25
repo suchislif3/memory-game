@@ -10,6 +10,8 @@ import {
   LibraryItemImage,
   LibraryItemText,
   LibraryTheme,
+  ThemeHeading,
+  GridSizeHeading,
 } from "./styles/NewGameSectionStyles";
 import {
   CollapsibleArrow,
@@ -45,7 +47,7 @@ const NewGameSection = ({
   const handleButtonClick = () => {
     startNewGame();
     setIsOpen(false);
-  }
+  };
 
   useEffect(() => {
     setIsOpen(gameState === gameStates.playing ? false : true);
@@ -68,8 +70,7 @@ const NewGameSection = ({
       </CollapsibleTitle>
       <CollapsibleContent isOpen={isOpen}>
         <NewGameDiv>
-          <h4>Theme</h4>
-          <h4>Grid size:</h4>
+          <ThemeHeading>Theme</ThemeHeading>
           <ThemeSelection>
             <select
               value={cardTheme}
@@ -90,6 +91,7 @@ const NewGameSection = ({
               />
             </IconDiv>
           </ThemeSelection>
+          <GridSizeHeading>Grid size</GridSizeHeading>
           <GridSize>
             <span>
               {gameState === "PLAYING"
@@ -98,7 +100,7 @@ const NewGameSection = ({
                 ? `${hoveredOverCard.position[1] + 1} x ${
                     hoveredOverCard.position[0] + 1
                   }`
-                : ""}
+                : "-"}
             </span>
             {gameState === "PLAYING" && (
               <IconDiv>
