@@ -12,9 +12,9 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: ${({ theme }) => theme.colors.primary1_dark};
+    background-color: ${({ theme }) => theme.colors.primary.dark};
     font-family: ${({ theme }) => theme.fonts.main};
-    font-size: min(2vmin, 1.2em);
+    font-size: max(min(2vmin, 1.2em), 12px);
     color: ${({ theme }) => theme.colors.neutral};
     cursor: default;
     text-align: center;
@@ -26,14 +26,14 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.colors.primary1_light};
+    color: ${({ theme }) => theme.colors.primary.light};
     &:hover {
-      color: ${({ theme }) => theme.colors.secondary2_light};
+      color: ${({ theme }) => theme.colors.secondary2.light};
     }
   }
 
   p {
-    color: ${({ theme }) => theme.colors.secondary1_light};
+    color: ${({ theme }) => theme.colors.secondary1.light};
   }
 
   span {

@@ -190,15 +190,21 @@ function App() {
           hoveredOverCard={hoveredOverCard}
           cardTheme={cardTheme}
           setCardTheme={setCardTheme}
+          numberOfCards={numberOfCards}
+          matchedPairs={matchedPairs}
         />
 
         {gameState === "PLAYING" ? (
-          <Stat>
-            <span>Turns: {turns}</span>
-            <span>
-              Matched: {matchedPairs} / {numberOfCards / 2}
-            </span>
-          </Stat>
+          matchedPairs === numberOfCards / 2 ? (
+            <span>You did it in {turns} turns!</span>
+          ) : (
+            <Stat>
+              <span>Turns: {turns}</span>
+              <span>
+                Matched: {matchedPairs} / {numberOfCards / 2}
+              </span>
+            </Stat>
+          )
         ) : (
           <span>
             Please select theme and click on a card to set the grid size and

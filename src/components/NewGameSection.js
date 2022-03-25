@@ -10,6 +10,8 @@ import {
   LibraryItemImage,
   LibraryItemText,
   LibraryTheme,
+  ThemeHeading,
+  GridSizeHeading,
 } from "./styles/NewGameSectionStyles";
 import {
   CollapsibleArrow,
@@ -29,6 +31,8 @@ const NewGameSection = ({
   hoveredOverCard,
   setCardTheme,
   cardTheme,
+  numberOfCards,
+  matchedPairs,
 }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [showPhotoList, setShowPhotoList] = useState(false);
@@ -40,9 +44,22 @@ const NewGameSection = ({
     setIsOpen(!isOpen);
   };
 
+  const handleButtonClick = () => {
+    startNewGame();
+    setIsOpen(false);
+  };
+
   useEffect(() => {
     setIsOpen(gameState === gameStates.playing ? false : true);
   }, [gameState]);
+
+  useEffect(() => {
+    if (matchedPairs === numberOfCards / 2) {
+      setTimeout(() => {
+        setIsOpen(true);
+      }, 400);
+    }
+  }, [matchedPairs, numberOfCards]);
 
   return (
     <>
@@ -53,8 +70,7 @@ const NewGameSection = ({
       </CollapsibleTitle>
       <CollapsibleContent isOpen={isOpen}>
         <NewGameDiv>
-          <h4>Theme</h4>
-          <h4>Grid size:</h4>
+          <ThemeHeading>Theme</ThemeHeading>
           <ThemeSelection>
             <select
               value={cardTheme}
@@ -75,6 +91,7 @@ const NewGameSection = ({
               />
             </IconDiv>
           </ThemeSelection>
+          <GridSizeHeading>Grid size</GridSizeHeading>
           <GridSize>
             <span>
               {gameState === "PLAYING"
@@ -83,7 +100,7 @@ const NewGameSection = ({
                 ? `${hoveredOverCard.position[1] + 1} x ${
                     hoveredOverCard.position[0] + 1
                   }`
-                : ""}
+                : "-"}
             </span>
             {gameState === "PLAYING" && (
               <IconDiv>
@@ -93,7 +110,7 @@ const NewGameSection = ({
           </GridSize>
 
           {gameState === "PLAYING" && (
-            <Button title="start new game" onClick={startNewGame}>
+            <Button title="start new game" onClick={handleButtonClick}>
               Start new game
             </Button>
           )}

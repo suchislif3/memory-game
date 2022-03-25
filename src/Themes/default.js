@@ -5,18 +5,21 @@ const theme = {
   },
   colors: {
     neutral: "#f2f5f7",
-
-    primary1_light: "#008282",
-    primary1_neutral: "#003C4D",
-    primary1_dark: "#00242E",
-
-    secondary1_light: "#AA9200",
-    secondary1_neutral: "#7C6B00",
-    secondary1_dark: "#4A4000",
-
-    secondary2_light: "#8F0041",
-    secondary2_neutral: "#690030",
-    secondary2_dark: "#3E001C",
+    primary: {
+      light: "#008282",
+      neutral: "#003C4D",
+      dark: "#00242E",
+    },
+    secondary1: {
+      light: "#AA9200",
+      neutral: "#7C6B00",
+      dark: "#4A4000",
+    },
+    secondary2: {
+      light: "#8F0041",
+      neutral: "#690030",
+      dark: "#3E001C",
+    },
   },
   breakpoints: {
     sm: "screen and (max-width: 640px)",

@@ -15,6 +15,7 @@ export const ModalContainer = styled.div`
   flex-direction: column;
   width: fit-content;
   max-height: 80%;
+  max-width: 98%;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -33,10 +34,10 @@ export const CloseIconDiv = styled.div`
   display: flex;
   align-items: center;
   padding: 3px;
-  color: ${({ theme }) => theme.colors.primary1_dark};
+  color: ${({ theme }) => theme.colors.primary.dark};
   cursor: pointer;
   
   &:hover {
-    color: ${({ theme }) => theme.colors.secondary1_light};
+    color: ${({ theme }) => theme.colors.secondary1.light};
   }
 `;

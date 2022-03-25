@@ -21,7 +21,7 @@ export const Button = styled.button`
   grid-area: 1 / 3 / 3 / 4;
   cursor: pointer;
   &:hover {
-    background: ${({ theme }) => theme.colors.secondary2_light};
+    background: ${({ theme }) => theme.colors.secondary2.light};
   }
 `;
 
@@ -30,7 +30,7 @@ export const Stat = styled.div`
   justify-content: space-between;
   width: 30%;
   max-width: 500px;
-  @media (max-width: 1200px) {
+  @media ${({ theme }) => theme.breakpoints.xl} {
     max-width: 400px;
   }
 `;
