@@ -242,6 +242,16 @@ function App() {
             ));
           })}
         </CardGrid>
+        <p>
+          by{" "}
+          <a
+            href="https://github.com/suchislif3"
+            target="_blank"
+            rel="noreferrer"
+          >
+            suchislif3
+          </a>
+        </p>
       </MainContainer>
     </ThemeProvider>
   );
