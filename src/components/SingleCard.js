@@ -24,7 +24,7 @@ const SingleCard = ({
     >
       {gameState === gameStates.playing && (
         <FrontImage
-          src={card.src}
+          src={process.env.PUBLIC_URL + card.src}
           flipped={flipped}
           matched={card.matched}
           alt="card front"
@@ -32,7 +32,7 @@ const SingleCard = ({
         />
       )}
       <BackImage
-        src={images.BACK.src}
+        src={process.env.PUBLIC_URL + images.BACK.src}
         alt="card back"
         id={card.position}
         onClick={() => handleCardClick(card)}

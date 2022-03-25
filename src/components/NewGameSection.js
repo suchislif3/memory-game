@@ -121,7 +121,7 @@ const NewGameSection = ({
         <Modal onClose={() => setShowPhotoList(false)}>
           <LibraryTheme>card back cover</LibraryTheme>
           <LibraryItem>
-            <LibraryItemImage src={images.BACK.src} />
+            <LibraryItemImage src={process.env.PUBLIC_URL + images.BACK.src} />
             <LibraryItemText>
               Photo by{" "}
               <a href={images.BACK.credit.url} target="_blank" rel="noreferrer">
@@ -145,7 +145,7 @@ const NewGameSection = ({
                 {images.FRONT[theme].map((card, id) => {
                   return (
                     <LibraryItem key={id}>
-                      <LibraryItemImage src={card.src} />
+                      <LibraryItemImage src={process.env.PUBLIC_URL + card.src} />
                       <LibraryItemText>
                         Photo by{" "}
                         <a
