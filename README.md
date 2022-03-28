@@ -15,16 +15,9 @@ This is a simple memory game with the following features:
 
 ## Installation and Setup Instructions
 
-Clone the repository. You will need `node` and `npm` installed globally on your machine.  
+1. Clone this repo by running `git clone https://github.com/suchislif3/memory-game`
+2. `cd memory-game`
+3. `npm install`
+4. `npm start`
 
-Installation:
-
-`npm install`  
- 
-To Start Server:
-
-`npm start`  
-
-To Visit App:
-
-`localhost:3000`  
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
