@@ -39,7 +39,10 @@ Open http://localhost:3000 in your browser to see the result.
 - CSS flipping and fade in animations
 
 ## screenshots
-...coming
+![home](https://user-images.githubusercontent.com/79847008/182610936-8459b1d7-c226-4fdf-a9f9-9fb96457894c.png)
+![gridselect](https://user-images.githubusercontent.com/79847008/182610972-26f3cd0f-0a78-4c21-9b62-2895207fc9a2.png)
+![playing_3_matches](https://user-images.githubusercontent.com/79847008/182610984-af45bb24-9306-4f5e-8400-9a7f2cfa3c01.png)
+
 
 ## credits
 - [Build a Memory Game with React](https://www.youtube.com/playlist?list=PL4cUxeGkcC9iQ7g2eoNXHCJBBBz40S_Lm)
